@@ -1,0 +1,413 @@
+輸入測資：
+Dear Sally,
+
+    Please, please do it--1 would 4
+Mary very, 1 much. And 4 6
+8 everything in 5's power to make
+14 pay off for you.
+
+    -- Thank 2 18 18--
+0
+
+
+第一行
+{
+    1. Dear -> {Dear}
+    """
+        Dear
+    """
+
+    2. Sally -> {Sally, Dear}
+    """
+        Dear Sally
+    """
+
+    3. ,
+    """
+        Dear Sally,
+    """
+}
+
+第二行
+{
+    // 空白
+}
+
+第三行
+{
+    1. Please -> {Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please
+    """
+
+    2. ,
+    """
+        Dear Sally,
+
+            Please,
+    """
+
+    3. please -> {please, Please, Sally, Dear} // 大小寫有分！
+    """
+        Dear Sally,
+
+            Please, please
+    """
+    
+    4. do -> {do, please, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do
+    """
+
+    5. it -> {it, do, please, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it
+    """
+    
+    6. --
+    """
+        Dear Sally,
+
+            Please, please do it--
+    """
+    
+    7. 1 : {it, do, please, Please, Sally, Dear} -> it
+    // 複製並刪除目標"it"，然後在開頭插入 :
+    new : {it, do, please, Please, Sally, Dear} // 沒變化，只是因為"it"剛好在第一個。
+    // 最後將【代號】用【目標】替代。
+    """
+        Dear Sally,
+
+            Please, please do it--it
+    """
+
+    8. would -> {would, it, do, please, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would
+    """
+
+    9. 4 : {would, it, do, please......} -> please
+    new : {please, would, it, do, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+    """
+}
+
+第四行
+{
+    1. Mary -> {Mary, please, would, it, do, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary
+
+    2. very -> {very, Mary, please, would, it, do, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very
+    """
+
+    3. ,
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very,
+    """
+
+    4. 1 : {very......} -> very
+    new : {very, Mary, please, would, it, do, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very
+    """
+
+    5. much -> {much, very, Mary, please, would, it, do, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much
+    """
+
+    6. .
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much.
+    """
+
+    7. And -> {And, much, very, Mary, please, would, it, do, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And
+    """
+
+    8. 4 : {And, much, very, Mary......} -> Mary
+    new : {Mary, And, much, very, please, would, it, do, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary
+    """
+
+    9. 6 : {Mary, And, much, very, please, would......} -> would
+    new : {would, Mary, And, much, very, please, it, do, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+    """
+}
+
+第五行
+{
+    1. 8 : {would, Mary, And, much, very, please, it, do......} -> do
+    new : {do, would, Mary, And, much, very, please, it, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do
+    """
+
+    2. everything -> {everything, do, would, Mary, And, much, very, please, it, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything
+    """
+
+    3. in -> {in, everything, do, would, Mary, And, much, very, please, it, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything in
+    """
+
+    4. 5 : {in, everything, do, would, Mary......} -> Mary
+    new : {Mary, in, everything, do, would, And, much, very, please, it, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything in Mary
+    """
+
+    5. '
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything in Mary'
+    """
+
+    6. s -> {s, Mary, in, everything, do, would, And, much, very, please, it, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything in Mary's
+    """
+
+    7. power -> {power, s, Mary, in, everything, do, would, And, much, very, please, it, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything in Mary's power
+    """
+
+    8. to -> {to, power, s, Mary, in, everything, do, would, And, much, very, please, it, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything in Mary's power to
+    """
+
+    9. make -> {make, to, power, s, Mary, in, everything, do, would, And, much, very, please, it, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything in Mary's power to make
+    """
+}
+
+第六行
+{
+    1. 14 : {make, to, power, s, Mary, in, everything, do, would, And, much, very, please, it......} -> it
+    new : {it, make, to, power, s, Mary, in, everything, do, would, And, much, very, please, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything in Mary's power to make
+        it
+    """
+
+    2. pay -> {pay, it, make, to, power, s, Mary, in, everything, do, would, And, much, very, please, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything in Mary's power to make
+        it pay
+    """
+
+    3. off -> {off, pay, it, make, to, power, s, Mary, in, everything, do, would, And, much, very, please, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything in Mary's power to make
+        it pay off
+    """
+
+    4. for -> {for, off, pay, it, make, to, power, s, Mary, in, everything, do, would, And, much, very, please, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything in Mary's power to make
+        it pay off for
+    """
+
+    5. you -> {you, for, off, pay, it, make, to, power, s, Mary, in, everything, do, would, And, much, very, please, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything in Mary's power to make
+        it pay off for you
+    """
+
+    6. .
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything in Mary's power to make
+        it pay off for you.
+    """
+}
+
+第七行
+{
+    // 空白
+}
+
+第八行
+{
+    1. --
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything in Mary's power to make
+        it pay off for you.
+            --
+    """
+
+    2. Thank -> {Thank, you, for, off, pay, it, make, to, power, s, Mary, in, everything, do, would, And, much, very, please, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything in Mary's power to make
+        it pay off for you.
+            -- Thank
+    """
+
+    3. 2 : {Thank, you......} -> you
+    new : {you, Thank, for, off, pay, it, make, to, power, s, Mary, in, everything, do, would, And, much, very, please, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything in Mary's power to make
+        it pay off for you.
+            -- Thank you
+    """
+
+    4. 18 : {you, Thank, for, off, pay, it, make, to, power, s, Mary, in, everything, do, would, And, much, very......} -> very
+    new : {very, you, Thank, for, off, pay, it, make, to, power, s, Mary, in, everything, do, would, And, much, please, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything in Mary's power to make
+        it pay off for you.
+            -- Thank you very
+    """
+
+    5. 18 : {very, you, Thank, for, off, pay, it, make, to, power, s, Mary, in, everything, do, would, And, much......} -> much
+    new : {much, very, you, Thank, for, off, pay, it, make, to, power, s, Mary, in, everything, do, would, And, please, Please, Sally, Dear}
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything in Mary's power to make
+        it pay off for you.
+            -- Thank you very much
+    """
+
+    6. --
+    """
+        Dear Sally,
+
+            Please, please do it--it would please
+        Mary very, very much. And Mary would
+        do everything in Mary's power to make
+        it pay off for you.
+            -- Thank you very much--
+    """
+}
+
+第九行
+{
+    0 // 結束
+}
